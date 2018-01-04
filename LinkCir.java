@@ -1,10 +1,10 @@
 package LinkList;
 
-public class LinkCir {
+public class Link {
 	  public long data;
 	  public Link next;
 
-	  public LinkCir(long val) {
+	  public Link(long val) {
 	    data = val;
 	    next = null;
 	  }
