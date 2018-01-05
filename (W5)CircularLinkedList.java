@@ -9,7 +9,7 @@ public class CircularLinkedList {
     public Node head=null;
     public Node tail=null;
     //add a new node at the start of the linked list
-    public void addNodeAtStart(int val){ //¡êÍ»ÁÒáµèà¢éÒã¨¹Ð!!
+    public void addNodeAtStart(int val){
         Node nptr = new Node(val,null);    
         nptr.setLink(head);
         if(head == null){            
@@ -24,7 +24,7 @@ public class CircularLinkedList {
         size++ ;
     }
 //-------------------------------------------------------
-    public void deleteAtPos(int pos){    //¹Õè¡êÍ»ÁÒ¨ÃÔ§¨Ñ§ áµèà¢éÒã¨ÇÔ¸Õ¡ÒÃ·Ó§Ò¹
+    public void deleteAtPos(int pos){
         if (size == 1 && pos == 1){
             head = null;
             tail = null;
@@ -137,4 +137,4 @@ class Node{
 }
 
 //	 linked list singly not doubly or circular get problem in loop
-//  some of code get form GitHub and StackOverflow	
+//  some of code get form GitHub and StackOverflow , Mukya
