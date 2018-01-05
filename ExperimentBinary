@@ -1,0 +1,238 @@
+
+Binary Tree
+
+class Node
+{
+person p1;			// reference to person object
+node leftChild ;			// this node ‘s left child
+node rightChild ;			// this node ‘s right child
+}
+class person 
+{
+int i Data ; 
+double fData ;
+}
+Class node
+{
+int iData ;			// data used as keyvalue
+double f data ; 			// other data
+node leftChild ;			// yhis node 's left child
+node rightChild ;			// this node's  right child
+
+public void displayNode ()
+{
+}
+}
+//---------------------------------------------------------------------------------------------
+
+class Tree 
+{
+private Node root ;
+public void find (int key)
+{
+}
+public void insert(int id,double dd)
+{
+}
+public void delete(int id)
+{
+}
+// varios other methods
+} // end class Tree
+//-------------------------------------------------------------------------------------------------
+Binary Tree : find
+
+public Node find(int key)
+{
+Node current = root ;
+while(current.iData ! = key)			// while no match,
+{
+if(key < current.iData)			// go left?
+	current = current.leftChild;
+else
+	 current = current.rightChild;		//or go right ?
+if(current = = null)				//if no child,
+	return null ;			//did;t find it
+}
+return current ;				// found it
+}
+//--------------------------------------------------------------------------------------------------
+Binary Tree : insert
+
+public void insert(int id , double dd)
+{
+Node newNode = new Node();		//make new node
+newNode.iData = id;			//insert data
+newNode.dData= dd;
+if(root = = null)				//no node in root
+	root = newNode;
+else 
+{
+Node current = root;			//start at toot
+Node parent;
+while(true)				//(exits internally)
+{
+	parnt = current;
+	if(id < current.iData)		//go left?
+	{
+	current = current.leftChild;
+	if(current = =null)			// if end of the line,
+	{				// insert on left
+	parent.leftChild = newNode ;
+	return ;
+	}
+} // end if go left
+else					// or go right?
+{
+current = current.rightChild;
+if(current = =null) 				// if end of the line 
+	{				//insert on right
+	parent.rightChild = newNode;
+	return ;
+	}	
+   }					// end else go right
+  }					// end white
+ }					//end else not root
+}					// end insert()
+
+//---------------------------------------------------------------------------------------------------------------
+Binary Tree : Inorder Traversing
+
+private void inOrder(node localRoot)
+{
+if(localRoot ! = null)
+	{
+	inOrder(localroot.leftChild);
+
+	System.out.print(lacalRoot.iData+ "  ");
+	inOrder(localRoot.rightChild) ;
+	}
+}
+//--------------------------------------------------------------------------------------------------------------------------
+Binary Tree : Min & Max
+public Node minimum() 
+{
+Node curren,last;
+current = root;
+while(cirrent ! = null)
+	{
+	last = current ;			//remember node
+	current = current.leftChild ;		// go to left child
+	}
+return last ;
+}
+//------------------------------------------------------------------------------------------------------------------
+Binary Tree : Delete
+public boolean delete )int key)		//delete node with given key
+	(				//(assumes non-emppty list)
+	Node current = root ;		
+	Node parent = root ;
+	boolean isLeftChild = true;
+
+	while(current.iData ! = key)		// search for node
+	{
+	parent = current;
+	if(key < current.iData)		// go left?
+	{
+	isLeftChild = true;
+	current = current.leftChild ;
+	}
+	else				// or go right?
+	{
+	isLeftChild = false;
+	current = currrent.rightChild;
+	}	
+	if(current == null)			// end of the line,
+	return false:			// didn't find it
+	} 				//end while
+// fiund node to delete
+//continues...
+}
+//----------------------------------------------------------------------------------------------------------------
+Binary Tree : Delete
+***ตัวอย่าง กรณีโหนดที่ต้องการลบ ไม่มีโหนดลูก
+	// delete() continued...
+	//if no children,simply delete it
+	if(current.leftChild==null &&
+				current.rightChild==null)
+	{
+	if(current == root)			// if root,
+	root = null;			//tree is empty
+	else if(isLeftChild)
+	parent.leftChild	 =null;		//disconnect
+	else				//from parent
+	parent.rightChild =null;	
+	}
+	//continues
+//-----------------------------------------------------------------------------------------------------------------
+***กรณีมีโหนดลูก 1 โหนด
+	//delete() continued...	
+	//if no right child,replace with left subtree	
+	else if(current.rightChild==null)
+	 if(current==root)
+
+		root = current.lettchild;
+	else if(isleftChild)			//left cgild of parent
+		parent.leftChild = current.leftChild;
+	else				//right child of parent
+		parent.rightChild = current.leftChild;
+
+	//if no left child , replace with right subtree
+	else if (curremt.leftChild==null)
+	if(current == root)
+	root = current.right.rightChild;
+	else if (is(isleftChild		//left child of parent
+	parent.leftChild = current.rightChild;
+	else				//right child of parent
+	parent.rightChild = current.right.rightChild ;
+//continurd	
+//-------------------------------------------------------------------------------------------------------------------------------
+***การค้นหา Successor
+// return node with next-highest value after deNode
+//goes to right child, then rigth child's left descendants
+
+private node getSuccessor(node de1Node)
+{
+Node successorParnet = de1Node;
+Node successor = de1Node;
+Node current = de1Node.rightChild;		//go to right child
+while (current ! =null)			//unitl no more
+{					//left children,
+	successorParent = successor ;
+	successor = current ;
+	current = current.leftChild;		//go to left child
+	}
+					// if successor not
+if(successor ! = de1Node.rightChide)		//right child,
+	{				//make connections
+	successorParent.leftChild = successor.rightChild;
+	successor.rightChild = de1Node.rightChild;
+	}
+return successor;
+}
+//--------------------------------------------------------------------------------------------------------------------------------
+*** delete(ต่อ)กรณีที่มีโหนดลูก 2 โหนด
+//delete() continued
+else 					//two childen,soreplace with inorder successor
+	{
+					//get successor of node to delete(current)
+	Node successor = getsuccessor (current);
+
+
+	//connect parent of current to successor instead
+	if(current == root)
+		root = successor ;
+	else if (isLeftChild)
+		parent.rightChild = successor;
+
+	else
+		parent.rightChild = successor ;
+	// connect successor to current's left child
+	successor.leftChild = currend.leftChild;
+	} //end else two children
+// (successor cannot have a left child)
+return true;
+}	// end delete()
+
+
+
