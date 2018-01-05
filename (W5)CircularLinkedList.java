@@ -9,7 +9,7 @@ public class CircularLinkedList {
     public Node head=null;
     public Node tail=null;
     //add a new node at the start of the linked list
-    public void addNodeAtStart(int val){ //��ͻ�������㨹�!!
+    public void addNodeAtStart(int val){ //¡êÍ»ÁÒáµèà¢éÒã¨¹Ð!!
         Node nptr = new Node(val,null);    
         nptr.setLink(head);
         if(head == null){            
@@ -24,7 +24,7 @@ public class CircularLinkedList {
         size++ ;
     }
 //-------------------------------------------------------
-    public void deleteAtPos(int pos){    //����ͻ�Ҩ�ԧ�ѧ �������Ըա�÷ӧҹ
+    public void deleteAtPos(int pos){    //¹Õè¡êÍ»ÁÒ¨ÃÔ§¨Ñ§ áµèà¢éÒã¨ÇÔ¸Õ¡ÒÃ·Ó§Ò¹
         if (size == 1 && pos == 1){
             head = null;
             tail = null;
